@@ -14,7 +14,7 @@ function App() {
       <h2>Backend APIs</h2>
 
       <ul>
-        <li>GET /api/hello</li>
+        <li>GET /api/heeellllllllooooooo</li>
         <li>GET /api/info</li>
         <li>GET /api/status</li>
         <li>POST /api/message</li>
