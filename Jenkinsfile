@@ -19,6 +19,15 @@ pipeline{
             }
         }
 
+        stage('Deploy frontend') {
+    steps {
+        sh '''
+            rm -rf /var/www/cicd-frontend/*
+            cp -r frontend/dist/* /var/www/cicd-frontend/
+        '''
+    }
+}
+
         stage('Archive backend artifact'){
             steps{
                 archiveArtifacts artifacts: 'cicd-backend/target/*.jar', fingerprint: true
