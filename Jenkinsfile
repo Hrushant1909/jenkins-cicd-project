@@ -24,6 +24,19 @@ pipeline{
                 archiveArtifacts artifacts: 'cicd-backend/target/*.jar', fingerprint: true
             }
         }
+
+        stage('Deploy backend'){
+            steps{
+                sh '''
+                    cp cicd-backend/target/*.jar /opt/cicd-app/app.jar
+
+                    pkill -f "java -jar /opt/cicd-app/app.jar" || true
+
+                    nohup java -jar /opt/cicd-app/app.jar \
+                        > /opt/cicd-app/app.log 2>&1 &
+                '''
+            }
+        }
     }
 
 
