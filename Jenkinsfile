@@ -32,6 +32,7 @@ pipeline{
 
                     pkill -f "java -jar /opt/cicd-app/app.jar" || true
 
+                    JENKINS_NODE_COOKIE=dontKillMe \
                     nohup java -jar /opt/cicd-app/app.jar \
                         > /opt/cicd-app/app.log 2>&1 &
                 '''
