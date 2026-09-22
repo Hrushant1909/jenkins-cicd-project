@@ -18,6 +18,12 @@ pipeline{
                 }
             }
         }
+
+        stage('Archive backend artifact'){
+            steps{
+                archiveArtifacts artifacts: 'cicd-backend/target/*.jar', fingerprint: true
+            }
+        }
     }
 
 
