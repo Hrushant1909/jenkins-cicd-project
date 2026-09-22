@@ -2,9 +2,11 @@ pipeline{
     agent any
 
     stages{
-        stage('Hello'){
+        stage('Backend build and test'){
             steps{
-                echo 'Hello Hrushant from Jenkinsfile'
+                dir('cicd-backend'){
+                    sh './mvnw clean test'
+                }
             }
         }
     }
