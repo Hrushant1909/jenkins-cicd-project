@@ -9,6 +9,16 @@ pipeline{
                 }
             }
         }
+
+        stage('Frontend build'){
+            steps{
+                dir('frontend'){
+                    sh 'npm ci'
+                    sh 'npm run build'
+                }
+            }
+        }
     }
+
 
 }
