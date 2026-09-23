@@ -20,13 +20,13 @@ pipeline{
         }
 
         stage('Deploy frontend') {
-    steps {
-        sh '''
-            rm -rf /var/www/cicd-frontend/*
-            cp -r frontend/dist/* /var/www/cicd-frontend/
-        '''
-    }
-}
+            steps {
+                sh '''
+                    rm -rf /var/www/cicd-frontend/*
+                    cp -r frontend/dist/* /var/www/cicd-frontend/
+                '''
+            }
+        }
 
         stage('Archive backend artifact'){
             steps{
@@ -47,6 +47,19 @@ pipeline{
                 '''
             }
         }
+
+        post{
+            success{
+                echo 'Pipeline completed successfully!'
+            }
+            failure{
+                echo 'Pipeline failed!'
+            }
+            always{
+                echo 'Pipeline finished!'
+            }
+        }
+
     }
 
 
